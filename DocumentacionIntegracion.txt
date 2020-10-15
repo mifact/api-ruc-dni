@@ -1,0 +1,61 @@
+Estimado usuario del sistema Mifact, para que puedas integrar tu sistema a nuestro servicio de consulta RUC tendrás que utilizar una conexión web service con el formato Json y tomar en cuenta la siguiente especificación técnica.
+
+URL del servicio web para la consulta/validación RUC
+https://mifact.net.pe/wsmifactsunat/ApiSUNAT.svc/ConsultaRUC
+
+Enviar el siguiente texto en formato json al servicio.
+
+{
+  "TOKEN":"20601847834UX4D9MZK",
+  "RUC_RECEPTOR":"20601847834"
+}
+
+"TOKEN" : es el código asignado a tu empresa (tiene que solicitar a soporte@mifact.net su token indicando su RUC de distribuidor Mifact o Cliente Mifact).
+"RUC_RECEPTOR" : es el RUC del cliente a consultar en SUNAT o DNI en reniec.
+
+### CONTROL DE LAS RESPUESTAS DEL SERVICIO #########
+
+La respuesta del servicio para RUC será de la siguiente manera en formato jSon:
+
+{
+    "aCod_MensajeAPP": "0",
+    "aCondicion_Contr": "HABIDO",
+    "aDireccion_Fiscal": "CAL.MONTE ALAMO NRO. 1010 URB. RESIDENCIAL MONTERRICO (CRUCE AV. TINOCO CON MONTE ALAMO) LIMA  - LIM",
+    "aEstado_Contr": "ACTIVO",
+    "aMensajeAPP": "OK",
+    "aNombre_Comercial": "MIFACT",
+    "aNumero_RUC": "20601847834",
+    "aRazon_Social": "OSYS COMPANY S.A.C.",
+    "aUbigeo": "150142"
+}
+
+La respuesta del servicio para DNI será de la siguiente manera en formato jSon:
+{
+  "aCod_MensajeAPP": "0",
+  "aCondicion_Contr": "HABIDO",
+  "aDireccion_Fiscal": "----",
+  "aEmitePSE": null,
+  "aEmiteSOL": null,
+  "aEstado_Contr": "ACTIVO",
+  "aMensajeAPP": "OK",
+  "aNombre_Comercial": null,
+  "aNumero_RUC": "45484554",
+  "aObligadoCPE": null,
+  "aRazon_Social": "JUAN RIOS LLANOS",
+  "aTelefono_Contr": null,
+  "aUbigeo": ""
+}
+
+Notas:
+    Si en la respuesta el tag  "aCod_MensajeAPP" es diferente de 0 quiere decir que hubo un error y debera de ver el tag "aMensajeAPP"
+
+Restricciones y consideraciones:
+    > El servicio estará vigente mientras cuente con su plan activo y no mantenga deudas.
+
+    > El número de consulta RUC no puede ser mayor a las facturas emitidas en el mes, quier decir si emites 200 facturas al mes, el número de consulta RUC no puede ser mayor a 200, el sistema bloqueara y enviara una notificacion para consultas adicionales. 
+
+    > Para los sistema integrados o distribuidores, el limite máximo de consulta DNI es de 30 por RUC emisor como promedio, el cual se calcula por todos los RUC del distribuidor y/o cliente mifact directo, es decir si el distribuidor y/o cliente mifact directo tiene 5 (cinco) empresas (RUC emisores) se multiplica 30 consultas DNI * 5 empresas  = 150 consultas DNI al día como máximo entre todos los RUC emisores, pasado ese limite tendrá un costo de S/ 0.02 Inc. IGV por consulta adicional el cual sera facturado al distribuidor y/o cliente mifact directo.
+
+    > Este servicio de consulta RUC o DNI podrá ser suspendido en cualquier momento ya que se trata un servicio prestado por terceros, OSYS COMPANY SAC, no se hace responsable por la información retornada por el servicio de consulta DNI o RUC, se recomienda al usuario verificar los datos (nombres) si corresponde al cliente final que realiza la compra.
+    
+    > Cuando termine su bolsa de consultas DNI o RUC gratuitas, el sistema enviara una alerta para que active las consultas adicionales en el sistema portal mifact o portal del distribuidor mifact, de esa manera estará aceptando el cobro adicional de consulta DNI.
