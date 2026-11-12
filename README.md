@@ -45,16 +45,8 @@ Al utilizar el servicio de consulta de RUC, DNI y Tipo de Cambio provisto por **
 
 ---
 
-## 🔄 Historial y Versión Anterior
-
-Si vienes utilizando la integración histórica documentada en este repositorio:
-* Consulta la referencia histórica en: [`DocumentacionIntegracion.txt`](./DocumentacionIntegracion.txt).
-* Recomendamos actualizar las llamadas HTTP de tu software hacia los nuevos endpoints REST JSON disponibles en [Verifija Docs](https://panel.verifija.com/docs/) para contar con mayor velocidad, soporte y estabilidad.
-
----
-
 ## 🏢 Contacto y Soporte
 
-* **Desarrollado por:** OSYS COMPANY S.A.C. / Mifact
+* **Desarrollado por:** OSYS COMPANY S.A.C.
 * **Plataforma:** [https://panel.verifija.com/](https://panel.verifija.com/)
 * **Documentación técnica:** [https://panel.verifija.com/docs/](https://panel.verifija.com/docs/)
